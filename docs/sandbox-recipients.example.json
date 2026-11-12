@@ -7,7 +7,19 @@
     "surname": "Ridge Rentals"
   },
   "recipients": {
-    "_note": "Fictional resident id -> sandbox PERSONAL account email. The sandbox delivers mail only inside itself, so a recipient must be a sandbox account. Map only the residents you intend to invoice; an unmapped resident is reported as unmapped, never substituted.",
+    "_note": "Fictional resident id -> sandbox PERSONAL account email. The sandbox delivers mail only inside itself, so a recipient must be a sandbox account. One sandbox personal account can stand in for every resident: each still gets their own invoice. The p-ca ids are the twelve residents of 140 College Ave (the default); p-3a-devi is in the Willow Court scenario. An unmapped resident is shown as \"No PayPal email\" and is never invoiced or substituted.",
+    "p-ca-priya": "REPLACE-with-your-sandbox-personal-account-email",
+    "p-ca-marcus": "REPLACE-with-your-sandbox-personal-account-email",
+    "p-ca-sofia": "REPLACE-with-your-sandbox-personal-account-email",
+    "p-ca-diego": "REPLACE-with-your-sandbox-personal-account-email",
+    "p-ca-hannah": "REPLACE-with-your-sandbox-personal-account-email",
+    "p-ca-tyler": "REPLACE-with-your-sandbox-personal-account-email",
+    "p-ca-ngozi": "REPLACE-with-your-sandbox-personal-account-email",
+    "p-ca-owen": "REPLACE-with-your-sandbox-personal-account-email",
+    "p-ca-mei": "REPLACE-with-your-sandbox-personal-account-email",
+    "p-ca-caleb": "REPLACE-with-your-sandbox-personal-account-email",
+    "p-ca-isla": "REPLACE-with-your-sandbox-personal-account-email",
+    "p-ca-theo": "REPLACE-with-your-sandbox-personal-account-email",
     "p-3a-devi": "REPLACE-with-your-sandbox-personal-account-email"
   }
 }
