@@ -1,0 +1,13 @@
+{
+  "_note": "COPY THIS TO .hearth-local/sandbox-recipients.json AND FILL IT IN. That path is gitignored. Sandbox account addresses are account details, not fixture data, so they never go in data/willow-court.mjs and never go in a commit. No password, client ID or client secret belongs in this file either — those go in .env.",
+  "invoicer": {
+    "_note": "The sandbox BUSINESS account. It is the seller of record on every invoice: the fictional landlord. PayPal requires the invoicer email to be this account's own primary email.",
+    "sandboxBusinessEmail": "REPLACE-with-your-sandbox-business-account-email",
+    "givenName": "Lantern",
+    "surname": "Ridge Rentals"
+  },
+  "recipients": {
+    "_note": "Fictional resident id -> sandbox PERSONAL account email. The sandbox delivers mail only inside itself, so a recipient must be a sandbox account. Map only the residents you intend to invoice; an unmapped resident is reported as unmapped, never substituted.",
+    "p-3a-devi": "REPLACE-with-your-sandbox-personal-account-email"
+  }
+}

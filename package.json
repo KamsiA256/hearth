@@ -1,0 +1,37 @@
+{
+  "name": "hearth-hackathon-demo",
+  "version": "0.2.0",
+  "private": true,
+  "type": "module",
+  "description": "Hearth with shared-house rent allocation and PayPal sandbox invoicing. PayPal AI Hackathon 2026.",
+  "license": "MIT",
+  "engines": {
+    "node": ">=20.12"
+  },
+  "scripts": {
+    "demo": "HEARTH_DATASET=${HEARTH_DATASET:-college-ave-twelve} node --env-file-if-exists=.env scripts/demo-server.mjs",
+    "demo:offline": "npm run build:offline && HEARTH_MODE=offline PAYMENTS_MODE=offline DEMO_PORT=${DEMO_PORT:-8889} node scripts/demo-server.mjs",
+    "build:offline": "node scripts/build-offline-bundle.mjs",
+    "build": "npm run build:offline",
+    "test": "node --test tests/*.test.js",
+    "check": "node --check server/operator-api.mjs && node --check public/app.js && node --check public/model.js && node --check scripts/demo-server.mjs && node --check scripts/offline-entry.mjs && node --check scripts/build-offline-bundle.mjs && node --check src/money.js && node --check data/willow-court.mjs && node --check server/payments-api.mjs && node --check src/allocation.js && node --check src/payments/provider.js && node --check src/payments/paypal-sandbox.js && node --check src/payments/store.js && node --check src/payments/state.js && node --check src/payments/config.js && node --check src/payments/idempotency.js && node --check src/payments/offline.js && node --check scripts/verify-paypal-sandbox.mjs && node --check src/allocation-state.js && node --check src/allocation-store.js && node --check src/allocation-store-core.js && node --check src/allocation-store-memory.js && node --check server/allocation-api.mjs && node --check data/datasets.mjs && node --check data/meeting-scenario.mjs && node --check data/meeting-example.mjs && node --check data/builder.mjs && node --check data/room-facts.mjs && node --check data/college-ave-twelve.mjs && node --check data/college-ave-twelve-reviewed.mjs && node --check scripts/build-reviewer.mjs && node --check src/ai/config.js && node --check src/ai/client.js && node --check src/ai/provider.js && node --check src/ai/propose.js && node --check src/ai/proposal.js && node --check src/ai/weights.js && node --check scripts/verify-ai.mjs && node --check api/hearth.mjs && node --check server/handlers.mjs && node --check src/postgres-stores.js",
+    "verify:paypal": "node --env-file-if-exists=.env scripts/verify-paypal-sandbox.mjs",
+    "verify:ai": "node --env-file-if-exists=.env scripts/verify-ai.mjs",
+    "test:mutation": "node scripts/mutation-audit.mjs",
+    "build:reviewer": "node scripts/build-reviewer.mjs",
+    "review:offline": "npm run build:reviewer && python3 -m http.server --bind 127.0.0.1 --directory dist/reviewer 8899",
+    "demo:meeting-example": "HEARTH_DATASET=meeting-example node --env-file-if-exists=.env scripts/demo-server.mjs",
+    "build:meeting": "node scripts/build-reviewer.mjs --meeting",
+    "build:college": "node scripts/build-reviewer.mjs --college-ave",
+    "review:college": "npm run build:college && python3 -m http.server --bind 127.0.0.1 --directory dist/college-ave 8897",
+    "demo:college": "HEARTH_DATASET=college-ave-twelve-reviewed node --env-file-if-exists=.env scripts/demo-server.mjs"
+  },
+  "devDependencies": {
+    "@electric-sql/pglite": "^0.5.16",
+    "esbuild": "0.28.2"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^1.6.0",
+    "pg": "^8.23.1"
+  }
+}

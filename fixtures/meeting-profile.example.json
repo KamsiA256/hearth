@@ -1,0 +1,11 @@
+{
+  "profileVersion": 1,
+  "propertyLabel": "12 Example Lane (fictional)",
+  "householdTotalCents": 240000,
+  "period": "November 2026",
+  "residents": [
+    { "name": "Rowan Fictional", "shareCents": 85000 },
+    { "name": "Sasha Example", "shareCents": 80000 },
+    { "name": "Theo Placeholder", "shareCents": 75000 }
+  ]
+}

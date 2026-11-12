@@ -1,0 +1,23 @@
+/* Demo dataset notice and information requests (prior-landlord verification and similar). */
+.dataset-notice{margin:-10px 0 18px;padding:9px 13px;border:1px solid #efd7ad;border-radius:var(--radius-small);background:var(--amber-soft);color:#7a4a09;font-size:13px;font-weight:600;line-height:1.4}
+.why-box{margin:14px 0;padding:12px 14px;border-radius:var(--radius-small);background:var(--blue-soft)}.why-box p{margin:4px 0}.why-box .eyebrow{margin:0}
+.request-fields li.missing strong{color:var(--amber)}.request-fields li small{display:block;overflow-wrap:anywhere}
+.decided{margin:16px 0;padding:12px 14px;border:1px solid var(--line-strong);border-radius:var(--radius-small)}.decided p{margin:6px 0}
+button.danger{color:var(--red)}
+.public-facts{margin:0 0 18px}.public-facts dl{display:grid;grid-template-columns:max-content 1fr;gap:4px 14px;margin:8px 0}.public-facts dt{color:var(--muted)}.public-facts dd{margin:0;overflow-wrap:anywhere}
+@media(max-width:480px){.public-facts dl{grid-template-columns:1fr}.public-facts dd{margin-bottom:6px}}
+
+/* Active-property identity: neutral tile + a brief highlight after switching. */
+.property-bar{flex-wrap:nowrap;justify-content:flex-start}
+.property-bar .milestone{margin-left:auto;white-space:nowrap}
+.property-picker{max-width:none}
+.property-mark{flex:0 0 auto;display:grid;place-items:center;width:46px;height:46px;border-radius:12px;background:var(--green-soft);color:var(--green);font-weight:750;font-size:15px;letter-spacing:.02em}
+.property-mark:empty{display:none}
+.property-picker{flex:1 1 auto}
+#propertyName{font-size:19px}
+.property-bar.just-switched{animation:switched 1.2s ease-out}
+@keyframes switched{0%{box-shadow:0 0 0 3px var(--green)}100%{box-shadow:0 1px 2px rgba(0,0,0,.025)}}
+@media (prefers-reduced-motion:reduce){.property-bar.just-switched{animation:none;outline:2px solid var(--green)}}
+.demo-line{margin:4px 0 0;font-size:13px}
+@media(max-width:760px){.property-bar{flex-wrap:wrap}.property-mark{width:40px;height:40px;font-size:14px}.property-picker{flex-basis:calc(100% - 56px)}#propertyName{font-size:17px}}
+@media(max-width:480px){nav a{min-width:0;font-size:10.5px;padding:5px 1px}}

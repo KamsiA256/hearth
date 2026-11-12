@@ -1,0 +1,88 @@
+/* Rent allocation and sandbox invoicing. Uses the existing visual system; these are
+   only the pieces the rent sheet adds. */
+
+.sandbox-banner {
+  display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap;
+  margin: 0 0 14px; padding: 9px 12px; border-radius: 8px;
+  background: #f4f1e8; border: 1px solid #ddd6c2;
+  font-size: 13px; line-height: 1.45; color: #4a4f46;
+}
+.sandbox-banner.offline { background: #f1f1ef; border-color: #d9d9d4; }
+
+.blocked-banner {
+  margin: 12px 0; padding: 10px 12px; border-radius: 8px;
+  background: #fdf2ef; border: 1px solid #e8c4b8; color: #7a3620;
+  font-size: 13px; line-height: 1.5;
+}
+
+.rent-summary .balanced { color: #3f6b4a; }
+.rent-summary .unbalanced { color: #a33f22; }
+
+.version-label {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.92em; letter-spacing: 0.01em;
+}
+
+.rent-rows li > span:nth-child(2) { line-height: 1.8; }
+
+.invoice-review {
+  margin: 16px 0 4px; padding: 14px 16px;
+  border: 1px solid #ddd6c2; border-left: 3px solid #8a7d5a; border-radius: 8px;
+  background: #fcfbf7;
+}
+.invoice-facts { margin: 8px 0 14px; }
+.invoice-facts dd { margin-bottom: 9px; }
+.invoice-review .status-line { margin: 10px 0; }
+.small-text { font-size: 12.5px; }
+
+/* One light theme for the whole app. A dark panel inside a light page made the
+   invoice unreadable on a Mac in dark mode: the panel turned dark, its labels did not. */
+
+/* ---------- Allocation workspace ---------- */
+/* The status head is the same sentence the dashboard card shows, so a landlord who
+   clicks a card never has to re-read a differently worded version of it. */
+.status-head { display: flex; flex-direction: column; gap: 2px; margin: 0 0 14px; padding: 10px 12px; border-radius: 8px; border-left: 3px solid var(--line); background: var(--surface-2, rgba(0,0,0,.03)); }
+.status-head strong { font-size: 15px; }
+.status-head span { font-size: 13px; color: var(--muted); }
+.status-head.status-blocked { border-left-color: #b3261e; }
+.status-head.status-overdue { border-left-color: #a8560a; }
+.status-head.status-needs-decision { border-left-color: var(--green-mid, #176a4c); }
+.status-head.status-complete { border-left-color: #1f6b43; }
+
+.rent-basis { margin: -4px 0 12px; font-size: 13px; color: var(--muted); }
+.rent-basis.illustrative { color: var(--text); }
+.rent-basis a { white-space: nowrap; }
+
+/* Four columns: who, how much, allocation state, collection state. The last two are
+   never merged — an agreed share and a received payment are different facts. */
+.rent-rows .rent-row { display: grid; grid-template-columns: minmax(140px, 1.6fr) 110px 1fr 1fr auto; gap: 10px; align-items: center; }
+.rent-share { text-align: right; }
+.share-input { width: 100%; max-width: 100px; text-align: right; font-variant-numeric: tabular-nums; padding: 5px 7px; }
+.rent-state { font-size: 12px; }
+.rent-state .muted { display: inline-block; }
+
+.rent-steps li { display: grid; grid-template-columns: 22px 1fr auto; gap: 10px; align-items: center; }
+.rent-steps .step-mark { font-size: 13px; color: var(--muted); text-align: center; }
+.rent-steps .step-active .step-mark { color: var(--green-mid, #176a4c); }
+.rent-steps .step-done .step-mark { color: #1f6b43; }
+.rent-steps .step-todo strong, .rent-steps .step-todo small { color: var(--muted); }
+.rent-steps small { display: block; font-size: 12px; color: var(--muted); }
+
+.rent-collected { display: flex; flex-direction: column; gap: 2px; margin: 0; }
+.rent-collected span { font-size: 13px; color: var(--muted); }
+
+.provenance { margin-top: 18px; font-size: 13px; }
+.provenance summary { cursor: pointer; color: var(--muted); }
+.provenance dl { margin-top: 10px; }
+
+@media (max-width: 640px) {
+  .rent-rows .rent-row { grid-template-columns: 1fr auto; }
+  .rent-rows .rent-row .rent-state { grid-column: 1 / -1; }
+}
+
+/* A disabled action must look disabled. The publish button is disabled whenever the
+   split does not balance, and a solid, inviting button that silently ignores a
+   click is worse than no button: the reason it cannot be pressed is stated beside
+   it, so the control should match the sentence. */
+.rent-steps button:disabled,
+.rent-steps button.primary:disabled { opacity: .45; cursor: not-allowed; filter: grayscale(.6); }

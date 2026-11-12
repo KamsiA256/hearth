@@ -1,0 +1,14 @@
+# Upload only what the hosted app needs. Everything else stays on this machine —
+# in particular .env, .hearth-local/ (sandbox emails, local stores), docs/research/
+# (real people's contact details) and anything else untracked.
+/*
+!/api
+!/data
+!/fixtures
+!/public
+!/scripts
+!/server
+!/src
+!/package.json
+!/package-lock.json
+!/vercel.json

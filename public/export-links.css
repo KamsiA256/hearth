@@ -1,0 +1,16 @@
+.button {
+  background: var(--green);
+  border: 1px solid var(--green);
+  border-radius: 7px;
+  color: white;
+  cursor: pointer;
+  display: inline-block;
+  padding: 9px 11px;
+  text-decoration: none;
+}
+
+.button.secondary {
+  background: white;
+  border-color: var(--line);
+  color: var(--ink);
+}

@@ -1,0 +1,11 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "outputDirectory": "public",
+  "functions": {
+    "api/hearth.mjs": { "maxDuration": 300 }
+  },
+  "rewrites": [
+    { "source": "/api/:path*", "destination": "/api/hearth?__path=/api/:path*" },
+    { "source": "/demo/meta", "destination": "/api/hearth?__path=/demo/meta" }
+  ]
+}

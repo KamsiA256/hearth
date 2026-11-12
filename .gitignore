@@ -1,0 +1,46 @@
+# Secrets — nothing in this list may ever be committed.
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*_rsa
+credentials.json
+service-account*.json
+
+# Lease and tenant documents — NEVER in this repo (see docs/BOUNDARIES.md)
+*.pdf
+*.docx
+leases/
+tenants/
+
+# Dependencies and build output
+node_modules/
+dist/
+build/
+.venv/
+__pycache__/
+*.pyc
+
+# Local and editor
+.DS_Store
+.vscode/
+.idea/
+*.log
+.netlify/
+.vercel/
+
+# Local-only state: the sandbox recipient mapping and the payment store.
+# The payment store holds provider invoice IDs and send outcomes, never credentials.
+# It persists across restarts on purpose; resetting fictional UI data must not make
+# Hearth forget an invoice that really exists at the provider.
+.hearth-local/
+
+# Outreach research names real people and their contact details; it stays on this
+# machine (the hosted build already leaves docs/research/ out, see .vercelignore).
+docs/research/*outreach*
+
+# Terminal transcripts and zipped reviewer builds from local runs.
+Terminal Saved Output*.txt
+*.zip
